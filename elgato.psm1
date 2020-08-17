@@ -14,6 +14,16 @@ function Set-ElgatoKeyLight {
 
     .Parameter On
     If not specified, the light will be shut off. If specified, the light will be turned on.
+
+    .Example
+    Set a key light air to full brightness, and coolest color temperature.
+
+    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231 -Brightness 100 -Temperature 143
+
+    .Example
+    Set a key light air to half brightness with warmest color temperature (2)
+
+    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231 -Brightness 50 -Temperature 344
     #>
     [CmdletBinding()]
     param (
