@@ -6,7 +6,6 @@
     GUID = 'c8f9dcde-4eaf-4ab4-a7b6-71e2a19f9f02'
     Copyright = '2020 Trevor Sullivan'
     Description = 'Provides a PowerShell-friendly interface to manage Elgato devices, such as the Key Light Air.'
-    CompatiblePSEditions = @('Desktop', 'Core')
     FunctionsToExport = @('Set-ElgatoKeyLight')
     AliasesToExport = @('')
     VariablesToExport = @('')
