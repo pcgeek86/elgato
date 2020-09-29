@@ -26,7 +26,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Publish Module to PowerShell Gallery
-        uses: pcgeek86/publish-powershell-module-action@v12
+        uses: pcgeek86/publish-powershell-module-action@v13
         id: publish-module
         with:
           modulePath: .
