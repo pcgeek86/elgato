@@ -29,5 +29,5 @@ jobs:
         uses: pcgeek86/publish-powershell-module-action@v12
         id: publish-module
         with:
-          modulePath: ./elgato.psd1
+          modulePath: .
           NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
