@@ -26,8 +26,9 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Publish Module to PowerShell Gallery
-        uses: pcgeek86/publish-powershell-module-action@v14
+        uses: pcgeek86/publish-powershell-module-action@v16
         id: publish-module
         with:
-          modulePath: elgato
+          moduleName: elgato 
+          modulePath: elgato.psd1
           NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
