@@ -30,3 +30,4 @@ jobs:
         id: publish-module
         with:
           modulePath: ./elgato.psd1
+          NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
