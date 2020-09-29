@@ -29,6 +29,5 @@ jobs:
         uses: pcgeek86/publish-powershell-module-action@v18
         id: publish-module
         with:
-          moduleName: elgato 
-          modulePath: elgato.psd1
+          modulePath: elgato
           NuGetApiKey: ${{ secrets.PS_GALLERY_KEY }}
