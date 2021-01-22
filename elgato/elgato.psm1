@@ -49,3 +49,33 @@ function Set-ElgatoKeyLight {
     Invoke-RestMethod -Method Put -Uri http://$Hostname`:9123/elgato/lights -Body $Body
 
 }
+
+function Get-ElgatoKeyLight {
+<#
+    .Synopsis
+    Configures an Elgato Key Light Air that's connected to the local network. Control Center and Stream Deck software not required.
+
+    .Parameter Hostname
+    DNS Hostname or IP address of the target light, supports multiple objects
+
+    .Example
+    Get the current key light air settings
+
+    PS > Get-ElgatoKeyLight -Host 10.0.0.231
+
+    .Example
+    Get the current key light air settings of both key light airs
+
+    PS > Get-ElgatoKeyLight -Host 10.0.0.231, 10.0.0.232
+#>
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $true)]
+        [string[]] $Hostname
+    )
+
+    $HostName | ForEach-Object {
+        Invoke-RestMethod -Method Get -Uri http://$_`:9123/elgato/lights
+    }
+  
+  }
