@@ -24,11 +24,16 @@ function Set-ElgatoKeyLight {
     Set a key light air to half brightness with warmest color temperature (2)
 
     PS > Set-ElgatoKeyLight -On -Host 10.0.0.231 -Brightness 50 -Temperature 344
+
+    .Example
+    Set two key light airs to half brightness with warmest color temperature (2)
+
+    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231, 10.0.0.232 -Brightness 50 -Temperature 344
     #>
     [CmdletBinding()]
     param (
       [Parameter(Mandatory = $true)]
-      [string] $Hostname
+      [string[]] $Hostname
     , [ValidateRange(3,100)]
       [int] $Brightness
     , [ValidateRange(143, 344)]
@@ -46,7 +51,10 @@ function Set-ElgatoKeyLight {
             }
         )
     } | ConvertTo-Json
-    Invoke-RestMethod -Method Put -Uri http://$Hostname`:9123/elgato/lights -Body $Body
+
+    $HostName | ForEach-Object {
+        Invoke-RestMethod -Method Put -Uri http://$_`:9123/elgato/lights -Body $Body
+    }
 
 }
 
