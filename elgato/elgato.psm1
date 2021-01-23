@@ -10,7 +10,7 @@ function Set-ElgatoKeyLight {
     The brightness of the light that you are configuring. Valid values: 3 to 100.
 
     .Parameter Temperature
-    The color temperature (7000K to 2900K) to set the light to. Valid values: 143 to 344.
+    The color temperature (7000K to 2900K) to set the light to. Valid values: 2900 to 7000.
 
     .Parameter On
     If not specified, the light will be shut off. If specified, the light will be turned on.
@@ -18,17 +18,17 @@ function Set-ElgatoKeyLight {
     .Example
     Set a key light air to full brightness, and coolest color temperature.
 
-    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231 -Brightness 100 -Temperature 143
+    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231 -Brightness 100 -Temperature 7000
 
     .Example
     Set a key light air to half brightness with warmest color temperature (2)
 
-    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231 -Brightness 50 -Temperature 344
+    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231 -Brightness 50 -Temperature 2900
 
     .Example
-    Set two key light airs to half brightness with warmest color temperature (2)
+    Set two key light airs to half brightness with warmest color temperature (3)
 
-    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231, 10.0.0.232 -Brightness 50 -Temperature 344
+    PS > Set-ElgatoKeyLight -On -Host 10.0.0.231, 10.0.0.232 -Brightness 50 -Temperature 2900
     #>
     [CmdletBinding()]
     param (
@@ -36,7 +36,7 @@ function Set-ElgatoKeyLight {
       [string[]] $Hostname
     , [ValidateRange(3,100)]
       [int] $Brightness
-    , [ValidateRange(143, 344)]
+    , [ValidateRange(2900, 7000)]
       [int] $Temperature
     , [switch] $On
     )
@@ -46,7 +46,7 @@ function Set-ElgatoKeyLight {
         Lights = @(
             @{
                 Brightness = $Brightness
-                Temperature = $Temperature
+                Temperature = 1000000 / $Temperature -as [int] 
                 On = $On ? 1 : 0
             }
         )
