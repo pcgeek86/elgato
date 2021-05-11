@@ -2,7 +2,7 @@
     RootModule = 'elgato.psm1'
     Author = 'Trevor Sullivan <trevor@trevorsullivan.net>'
     CompanyName = 'Trevor Sullivan'
-    ModuleVersion = '0.3.4'
+    ModuleVersion = '0.4.1'
     PowerShellVersion = '7.0'
     GUID = 'c8f9dcde-4eaf-4ab4-a7b6-71e2a19f9f02'
     Copyright = '2020 Trevor Sullivan'
@@ -10,7 +10,11 @@
     FunctionsToExport = @(  'Get-ElgatoKeyLight',
                             'Set-ElgatoKeyLight',
                             'Start-ElgatoKeyLight',
-                            'Stop-ElgatoKeyLight'
+                            'Stop-ElgatoKeyLight',
+                            'Set-ElgatoLedStrip',
+                            'Get-ElgatoDevice',
+                            'Get-ElgatoKeyLightSettings',
+                            'Invoke-IdentifyElgatoLight'
                         )
     AliasesToExport = @('')
     VariablesToExport = @('')
